@@ -1,16 +1,33 @@
-function newElement(){
-  var boom = document.createElement("input");
-  boom.setAttribute("type","checkbox");
-  var li = document.createElement("li");
-  var inputValue=document.getElementById("addText").value;
-  if (inputValue===''){
-    alert("write something faggot");
-  }else{
-      var t=document.createTextNode(inputValue);
-  li.appendChild(boom);
-  li.appendChild(t);
-  document.getElementById("todolist").appendChild(li);
-  }
-  document.getElementById("addText").value="";
+var inputValue = document.getElementById("addText");
+var todolist = document.getElementById("todolist");
+var addText = document.getElementById("addText");
 
+function newElement() {
+  var closeButt = document.createElement("button");
+  closeButt.setAttribute("type", "submit");
+  closeButt.textContent = "\u00D7";
+  closeButt.className = "close";
+  var li = document.createElement("li");
+  if (inputValue.value === '') {
+    alert("write something faggot");
+  } else {
+    var t = document.createTextNode(inputValue.value);
+    li.appendChild(t);
+    li.appendChild(closeButt);
+    todolist.appendChild(li);
+  }
+  addText.value = "";
+
+  closeButt.addEventListener("click", function () {
+    var i = closeButt.parentElement;
+    //  i.style.display = "none"
+    //i.textContent = "";
+    var ii = i.parentElement;
+    ii.removeChild(i);
+  })
 }
+
+// function close(i) {
+//   i = this.parentElement;
+//   
+// }
